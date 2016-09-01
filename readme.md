@@ -1,4 +1,4 @@
-version:2.2.2   
+version:2.3.0   
 Test passed on win xp(x86), win 7(x86/x64), win 10(x64).  
 
 support scp01/scp02, security level:No secure / C-MAC / C-DECRYPTION and C-MAC.  
@@ -10,7 +10,8 @@ support multi-cap download (.txt)
 support view & install & delete card content:application, executable load files, security domain.  
 support get card available memory.  
 support KMC diversify: CPG202 / CPG212.  
-support des/3des,sha1,rsa(max 16384 bit).   
+support des/3des,sha1,rsa(max 16384 bit).
+support SM1/SM2/SM3.   
 support JCOP Debug(port 8050). 
 
 [Help DOC](https://github.com/APDU/SmartCardPlus/tree/master/doc)   
