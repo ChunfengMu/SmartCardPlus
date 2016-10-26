@@ -1,4 +1,4 @@
-version:3.0.0  
+version:3.0.2  
 Test passed on win 7(x86/x64), win 10(x64).  
 
 support PCSC/CCID reader.  

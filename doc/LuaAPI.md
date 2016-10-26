@@ -105,13 +105,21 @@ ext(sl)
 secApdu(apdu) 
 
 
-//SM2Encrypt  
+//SM2Encrypt  C=C1C2C3
 //return result   
 sm2Enc(sPlaintext, sPubkey, sPrikey)  
 
-//SM2Decrypt  
+//SM2Decrypt  C=C1C2C3
 //return result  
 sm2De(sCiphertext, sPubkey, sPrikey)  
+
+//SM2Encrypt  C=C1C3C2
+//return result   
+sm2EncC1C3C2(sPlaintext, sPubkey, sPrikey)  
+
+//SM2Decrypt  C=C1C3C2
+//return result  
+sm2DeC1C3C2(sCiphertext, sPubkey, sPrikey)  
 
 //SM2Signature  
 //return result  
