@@ -3,7 +3,8 @@ require("lib2")
 lib2print();
 
 reset();
-send("00A4040000","");
+local temp = send("00A4040000","");
+print(temp);
 send("00A4040000","");
 send("00A4040000","");
 send("00A4040000","");
