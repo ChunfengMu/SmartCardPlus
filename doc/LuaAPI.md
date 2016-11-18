@@ -129,6 +129,9 @@ sm2Sign(sPlain, sPubKey, sPriKey)
 //return bool  
 sm2Verify(sPlain, sRS, sPubKey)  
 
+//smSetID,set id for sm2 ,used before sm2verify/sm2sign      
+smSetID(ID)   
+
 //SM3  
 //return result  
 sm3(sPlain)  
