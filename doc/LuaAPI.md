@@ -1,4 +1,5 @@
-﻿//get current dir  
+﻿
+//get current dir  
 getDir()  
 
 
@@ -107,30 +108,27 @@ secApdu(apdu)
 
 //SM2Encrypt  C=C1C2C3
 //return result   
-sm2Enc(sPlaintext, sPubkey, sPrikey)  
+sm2Enc(sPlaintext, sPubkey)  
 
 //SM2Decrypt  C=C1C2C3
 //return result  
-sm2De(sCiphertext, sPubkey, sPrikey)  
+sm2De(sCiphertext, sPrikey)  
 
 //SM2Encrypt  C=C1C3C2
 //return result   
-sm2EncC1C3C2(sPlaintext, sPubkey, sPrikey)  
+sm2EncC1C3C2(sPlaintext, sPubkey)  
 
 //SM2Decrypt  C=C1C3C2
 //return result  
-sm2DeC1C3C2(sCiphertext, sPubkey, sPrikey)  
+sm2DeC1C3C2(sCiphertext, sPrikey)  
 
 //SM2Signature  
 //return result  
-sm2Sign(sPlain, sPubKey, sPriKey)  
+sm2Sign(sPlain, id, sPubKey, sPriKey)  
 
 //SM2Verify  
 //return bool  
-sm2Verify(sPlain, sRS, sPubKey)  
-
-//smSetID,set id for sm2 ,used before sm2verify/sm2sign      
-smSetID(ID)   
+sm2Verify(sPlain, id, sRS, sPubKey)  
 
 //SM3  
 //return result  

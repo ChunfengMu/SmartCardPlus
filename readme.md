@@ -1,5 +1,5 @@
-version:3.2.2.1    
-Test passed on win7(x86/x64),win8(x86/x64) win10(x64).  
+version:3.3.0.0    
+Test passed on Winxp(x86),win7(x86/x64),win8(x86/x64),win10(x64).  
 
 support PCSC/CCID reader.  
 support scp01/scp02, security level:No secure / C-MAC / C-DECRYPTION and C-MAC.  
