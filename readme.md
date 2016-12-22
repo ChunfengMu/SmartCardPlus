@@ -1,4 +1,4 @@
-version:3.3.0.0    
+version:3.3.0.1    
 Test passed on Winxp(x86),win7(x86/x64),win8(x86/x64),win10(x64).  
 
 support PCSC/CCID reader.  
