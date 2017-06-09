@@ -1,4 +1,16 @@
-﻿
+﻿//reader1 reader2 can constructor two reader ,then lua script can support dual-reader
+reader1(readername)
+reader2(readername)
+
+//reset card  for dual-reader
+reset(readername)  
+
+//send apdu,compare result  for dual-reader
+//return apdu's response  
+send (apdu, expect, readername)  
+
+
+
 //get current dir  
 getDir()  
 
