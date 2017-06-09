@@ -1,4 +1,4 @@
-version:3.3.0.3    
+version:3.3.1.0    
 Test passed on Winxp(x86),win7(x86/x64),win8(x86/x64),win10(x64).  
 
 support PCSC/CCID reader.  
@@ -6,7 +6,7 @@ support scp01/scp02, security level:No secure / C-MAC / C-DECRYPTION and C-MAC.
 support data authentication pattern (DAP).  
 support delegated management (DM) :	GP2.1 / GP2.2 / China Mobile CMS2AC / China Unicom UICC / China Telecom UICC.  
 support APDU send & receive.  
-support support .txt script / .lua script.   
+support support .txt script / .lua script(lua script also support dual reader).   
 support cap file download.  
 support multi-cap download (.txt).  
 support view & install & delete card content:application, executable load files, security domain.  
