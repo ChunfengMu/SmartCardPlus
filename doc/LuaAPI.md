@@ -1,4 +1,7 @@
-﻿//reader1 reader2 can constructor two reader ,then lua script can support dual-reader
+﻿for des/3des,the default icv is "0000000000000000"
+for sm4/aes,the default icv is "00000000000000000000000000000000"
+
+//reader1 reader2 can constructor two reader ,then lua script can support dual-reader
 reader1(readername)
 reader2(readername)
 
@@ -32,6 +35,26 @@ send (apdu, expect)
 reset()  
 
 
+//aes ecb mode encrypt  
+//return result  
+aesECBen(plaintext, key)  
+
+
+//aes ecb mode decrypt  
+//return result  
+aesECBde(cipher, key)  
+
+//aes cbc mode encrypt  
+//return result  
+aesCBCen(plaintext, key)  
+aesCBCen(plaintext, key, icv) 
+
+//aes cbc mode decrypt  
+//return result  
+aesCBCde(cipher, key)  
+aesCBCde(cipher, key, icv)  
+
+
 //des ecb mode encrypt  
 //return result  
 desECBen(plaintext, key)  
@@ -44,11 +67,12 @@ desECBde(cipher, key)
 //des cbc mode encrypt  
 //return result  
 desCBCen(plaintext, key)  
-
+desCBCen(plaintext, key, icv) 
 
 //des cbc mode decrypt  
 //return result  
 desCBCde(cipher, key)  
+desCBCde(cipher, key, icv)  
 
 
 //return result  
@@ -68,12 +92,13 @@ triDesECBde(cipher, key)
 //triple des cbc mode encrypt  
 //return result  
 triDesCBCen(plaintext, key)  
+triDesCBCen(plaintext, key, icv)  
 
 
 //triple des cbc mode decrypt  
 //return result  
 triDesCBCde(cipher, key)  
-
+triDesCBCde(cipher, key, icv) 
 
 //hash sha1  
 //return result  

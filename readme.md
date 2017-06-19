@@ -1,4 +1,4 @@
-version:3.3.1.0    
+version:3.4.0.0    
 Test passed on Winxp(x86),win7(x86/x64),win8(x86/x64),win10(x64).  
 
 support PCSC/CCID reader.  
@@ -12,8 +12,8 @@ support multi-cap download (.txt).
 support view & install & delete card content:application, executable load files, security domain.  
 support get card available memory.  
 support KMC diversify: CPG202 / CPG212.  
-support des/3des,sha1,rsa(max 16384 bit),PKCS1.  
-support SM4/SM2/SM3.   
+support des/3des,aes,sha1,rsa(max 16384 bit),PKCS1.  
+support SM1/SM2/SM3/SM4(SM1 only have verify data).   
 support JCOP Debug.  
 
 [Help DOC](https://github.com/APDU/SmartCardPlus/tree/master/doc)   
