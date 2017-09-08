@@ -1,6 +1,22 @@
 ﻿for des/3des,the default icv is "0000000000000000"
 for sm4/aes,the default icv is "00000000000000000000000000000000"
 
+//xor, xor("11223344","77889900")="66AAAA44"
+//return string
+xor(string,string)
+
+//xor, bitxor(7,4)=3
+//return int
+bitxor(int,int)
+
+//and, bitand(7,4)=4
+//return int
+bitand(int,int)
+
+//or,bitor(7,4)=7
+//return int
+bitor(int,int)
+
 //reader1 reader2 can constructor two reader ,then lua script can support dual-reader
 reader1(readername)
 reader2(readername)
