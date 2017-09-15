@@ -1,6 +1,14 @@
 ﻿for des/3des,the default icv is "0000000000000000"
 for sm4/aes,the default icv is "00000000000000000000000000000000"
 
+//>>, rshift(1,3)=8
+//return int
+rshift(int,int)
+
+//>>, lshift(8,3)=1
+//return int
+lshift(int,int)
+
 //xor, xor("11223344","77889900")="66AAAA44"
 //return string
 xor(string,string)
