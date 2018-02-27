@@ -75,6 +75,10 @@ function Send (apdu,sw)
 	elseif(string.sub(res,1,2)=="61")
 	then
 		res = send("00C00000"..string.sub(res,3,4),sw);
+	elseif(string.sub(res,-4) ~= sw)
+	then
+		error("error,sw should be"..sw);
+		
 	end	
 	return res;	
 end
