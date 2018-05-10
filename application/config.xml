@@ -3,8 +3,7 @@
   <gpVer>2.2</gpVer>
   <securityLevel>1</securityLevel>
   <channel>0</channel>
-  <SDconfig>
-  </SDconfig>
+  <SDconfig>SecurityDomainConfig.xml</SDconfig>
   <kmc>No Diversify</kmc>
   <loadLen>200</loadLen>
   <apduTimer>false</apduTimer>
