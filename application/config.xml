@@ -8,4 +8,6 @@
   <loadLen>200</loadLen>
   <apduTimer>false</apduTimer>
   <jcopport>8050</jcopport>
+  <scriptLog>true</scriptLog>
+  <capLog>true</capLog>
 </config>

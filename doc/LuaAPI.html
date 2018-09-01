@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    * Author:         APDU
+    -->
+   
+    <meta charset="utf-8" />
+    <title>Lua Extended API | Notes</title>
+    <meta name="author" content="ZM" />
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="Notes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="/css/default.css" type="text/css" />  
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />  
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    
+
+
+<div id="content">
+	<h1 >Lua Extended API</h1>
+	<p><a href="https://github.com/APDU/SmartCardPlus">SmartCard Plus</a> support <a href="http://www.lua.org/">lua</a> as a script language, except standard api and <a href="https://keplerproject.github.io/luafilesystem/">lfs</a>, it has some extended api.</p>
+
+<p>Most of the extended api are algorithms, such as des/aes/sha1/sha2/sha3/hmac/sm2/sm3/sm4/ecc, it also has pcsc/gp/macro/bit/big_num/base64/base58/ascii apis, and so on.</p>
+
+<p>Here are the introduction of extended api, you can get the extended api demo from <a href="https://github.com/APDU/lua-script">GitHub</a>.</p>
+
+<h2 id="1-hmac-api">1. HMAC API</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="11-string-hmac_sha1string-key-string-data">1.1 string hmac_sha1(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_sha1 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_sha1("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="12-hmac_sha224string-key-string-data">1.2 hmac_sha224(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_sha224 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_sha224("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="13-hmac_sha256string-key-string-data">1.3 hmac_sha256(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_sha256 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_sha256("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="14-hmac_sha384string-key-string-data">1.4 hmac_sha384(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_sha384 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_sha384("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="15-hmac_sha512string-key-string-data">1.5 hmac_sha512(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_sha512 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_sha512("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="16-hmac_md5string-key-string-data">1.6 hmac_md5(string key, string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The key to use in the hash algorithm.<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of hmac_md5 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hmac_md5("49237AE4E8F42118", "010A");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="2-hash-api">2. HASH API</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="21-string-sha1string-data">2.1 string sha1(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha1 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha1("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="22-string-sha224string-data">2.2 string sha224(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha224 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha224("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="23-string-sha256string-data">2.3 string sha256(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha256 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha256("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="24-string-sha384string-data">2.4 string sha384(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha384 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha384("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="25-string-sha512string-data">2.5 string sha512(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha512 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha512("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="26-string-sha3_224string-data">2.6 string sha3_224(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha3_224 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha3_224("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="27-string-sha3_256string-data">2.7 string sha3_256(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha3_256 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha3_256("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="28-string-sha3_384string-data">2.8 string sha3_384(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha3_384 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha3_384("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="29-string-sha3_512string-data">2.9 string sha3_512(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sha3_512 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha3_512("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="210-string-md5string-data">2.10 string md5(string data)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of md5 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>md5("BC26701DBAB5F200");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="3-des-api">3. DES API</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>There are no padding in Parameter data, you should make sure the bytes of data is n*8 (n=1,2,3…).</p>
+</blockquote>
+
+<h4 id="31-string-des_ecb_encryptstring-data-string-key">3.1 string des_ecb_encrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 8 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD3";
+des_ecb_encrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="32-string-des_ecb_decryptstring-data-string-key">3.2 string des_ecb_decrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 8 bytes key to use in the des algorithm.<br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD3";
+des_ecb_decrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="33-string-des_cbc_encryptstring-data-string-key-string-iv">3.3 string des_cbc_encrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 8 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD3";
+local iv = "FBBF4CA3899416BA";
+des_cbc_encrypt(data, key);
+des_cbc_encrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="34-string-des_cbc_decryptstring-data-string-key-string-iv">3.4 string des_cbc_decrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 8 bytes key to use in the des algorithm.<br />
+ data - The data to be decrypted. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD3";
+local iv = "FBBF4CA3899416BA";
+des_cbc_decrypt(data, key);
+des_cbc_decrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="35-string-triple_des_ecb_encryptstring-data-string-key">3.5 string triple_des_ecb_encrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD32F68618F398DAE55";
+triple_des_ecb_encrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="36-string-triple_des_ecb_decryptstring-data-string-key">3.6 string triple_des_ecb_decrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24 bytes key to use in the des algorithm.<br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD32F68618F398DAE55";
+triple_des_ecb_decrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="37-string-triple_des_cbc_encryptstring-data-string-key-string-iv">3.7 string triple_des_cbc_encrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD32F68618F398DAE55";
+local iv = "B9B23FC5F6D05BA4";
+triple_des_cbc_encrypt(data, key);
+triple_des_cbc_encrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="38-string-triple_des_cbc_decryptstring-data-string-key-string-iv">3.8 string triple_des_cbc_decrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24 bytes key to use in the des algorithm.<br />
+ data - The data to be decrypted. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD32F68618F398DAE55";
+local iv = "B9B23FC5F6D05BA4";
+triple_des_cbc_decrypt(data, key);
+triple_des_cbc_decrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="39-string-triple_des_macstring-data-string-key-string-iv">3.9 string triple_des_mac(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted, no padding. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return 8 bytes encrypt string.</p>
+</blockquote>
+
+<blockquote>
+  <p>triple_des_mac also known as Single DES Plus Final Triple DES MAC.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD32F68618F398DAE55";
+local iv = "B9B23FC5F6D05BA4";
+triple_des_mac(data, key);
+triple_des_mac(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="310-string-des_macstring-data-string-key-string-iv">3.10 string des_mac(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 8 bytes key to use in the des algorithm.<br />
+ data - The data to be encrypted, no padding. <br />
+ iv - The initialization vector, default value is “0000000000000000”, it should be 8 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return 8 bytes encrypt string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "536A7869F27500CD";
+local key = "22414FA8AC3F1FD3";
+local iv = "B9B23FC5F6D05BA4";
+des_mac(data, key);
+des_mac(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="4-aes-api">4. AES API</h2>
+
+<blockquote>
+  <p>There are no padding in Parameter data, you should make sure the bytes of data is n*16 (n=1,2,3…).</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>When an exception is thrown, a nil returned.</p>
+  </blockquote>
+</blockquote>
+
+<h4 id="41-string-aes_ecb_encryptstring-data-string-key">4.1 string aes_ecb_encrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24/32 bytes key to use in the aes algorithm.<br />
+ data - The data to be encrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "97804EB88D1B01A372F7886E356A12ED";
+local key = "97C73B18DACAB91D733F74CE831AC966";
+aes_ecb_encrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="42-string-aes_ecb_decryptstring-data-string-key">4.2 string aes_ecb_decrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24/32 bytes key to use in the aes algorithm.<br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "97804EB88D1B01A372F7886E356A12ED";
+local key = "97C73B18DACAB91D733F74CE831AC966";
+aes_ecb_decrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="43-string-aes_cbc_encryptstring-data-string-key-string-iv">4.3 string aes_cbc_encrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24/32 bytes key to use in the aes algorithm.<br />
+ data - The data to be encrypted. <br />
+ iv - The initialization vector, default value is “00000000000000000000000000000000”, it should be 16 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "97804EB88D1B01A372F7886E356A12ED";
+local key = "97C73B18DACAB91D733F74CE831AC966";
+local iv = "E4D5B07FE0E1DCE2F26695D28748D1BA";
+aes_cbc_encrypt(data, key);
+aes_cbc_encrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="44-string-aes_cbc_decryptstring-data-string-key-string-iv">4.4 string aes_cbc_decrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16/24/32 bytes key to use in the aes algorithm.<br />
+ data - The data to be decrypted. <br />
+ iv - The initialization vector, default value is “00000000000000000000000000000000”, it should be 16 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "97804EB88D1B01A372F7886E356A12ED";
+local key = "97C73B18DACAB91D733F74CE831AC966";
+local iv = "E4D5B07FE0E1DCE2F26695D28748D1BA";
+aes_cbc_decrypt(data, key);
+aes_cbc_decrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="5-rsa-api">5. RSA API</h2>
+
+<blockquote>
+  <p>RSA key sizes from 16 bits to 16384 bits in increments of 8 bits.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="51-string-rsa_encryptstring-data-string-n-string-e">5.1 string rsa_encrypt(string data, string n, string e)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ n - The public key of modulus n. <br />
+ e - The public key of exponent e. <br />
+ data - The data to be encrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>You can also use this function as rsa verification.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local n = "992B6FB3214415F3A5B6FBA2CE678E3BE129F7F769";
+local d = "661CF522162D63F7C3CF41CF0228EDD451E4B542E3";
+local e = "03";
+local data = "0102030405060708";
+rsa_encrypt(data, n, e);  
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="52-string-rsa_decryptstring-data-string-n-string-d">5.2 string rsa_decrypt(string data, string n, string d)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ n - The public key of modulus n. <br />
+ d - The private key of exponent d. <br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>You can also use this function as rsa signature.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local n = "992B6FB3214415F3A5B6FBA2CE678E3BE129F7F769";
+local d = "661CF522162D63F7C3CF41CF0228EDD451E4B542E3";
+local e = "03";
+local data = "0102030405060708";
+rsa_decrypt(data, n, d);  
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="53-string-rsa_crt_decryptstring-data-string-p-string-q-string-dp-string-dq-string-invq">5.3 string rsa_crt_decrypt(string data, string p, string q, string dp, string dq, string invq)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ p - The private key. <br />
+ q - The private key. <br />
+ dp - The private key.<br />
+ dq - The private key.<br />
+ invq - The private key.<br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>RSA with Chinese Remainder Theorem, you can also use this function as rsa signature.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local n = "992B6FB3214415F3A5B6FBA2CE678E3BE129F7F769";
+local d = "661CF522162D63F7C3CF41CF0228EDD451E4B542E3";
+local e = "03";
+local p = "0B0171209612983717D847";
+local q = "0DEADA09936ACE1BD03ACF";
+local dp = "07564B6B0EB71024BA902F";
+local dq = "09473C06624734128AD1DF";
+local invq = "091510E5FDDEB35A4BEC99";
+local data = "0102030405060708";
+rsa_crt_decrypt(data, p, q, dp, dq, invq); 
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="54-string-rsa_generate_keyint-bits-string-e">5.4 string[] rsa_generate_key(int bits, string e)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ bits - The bit-length of public key of modulus n.<br />
+ e - The public key of exponent e.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key &amp; private key returned, in lua it is a table:  <br />
+  table[0] is n;<br />
+  table[1] is d;<br />
+  table[2] is p;<br />
+  table[3] is q;<br />
+  table[4] is dp;<br />
+  table[5] is dq;<br />
+  table[6] is invq;</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local rsa_key = {};
+rsa_key = rsa_generate_key(1024, "03");
+if(rsa_key ~= nil)
+then
+  local n = rsa_key[0];
+  local d = rsa_key[1];
+  local p = rsa_key[2];
+  local q = rsa_key[3];
+  local dp = rsa_key[4];
+  local dq = rsa_key[5];
+  local invq = rsa_key[6];  
+end
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="55-string-pkcs_1string-data-string-n-string-d">5.5 string pkcs_1(string data, string n, string d)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ n - The public key of modulus n. <br />
+ d - The private key of exponent d. <br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>PKCS #1, is the first of a family of standards called Public-Key Cryptography Standards (PKCS).</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local n = "992B6FB3214415F3A5B6FBA2CE678E3BE129F7F769";
+local d = "661CF522162D63F7C3CF41CF0228EDD451E4B542E3";
+local e = "03";
+local data = "0102030405060708";
+pkcs_1(data, n, d);  
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="56-string-rsa_calc_estring-p1-string-p2">5.6 string rsa_calc_e(string p1, string p2)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ p1 - p or q. <br />
+ p2 - dp or dq, if p1 is p then p2 is dp, if if p1 is q then p2 is dq.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key of exponent e.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local e = "010001";
+local p = "FC488AD62B4598A702F8A5B74F53A9A30F3793F05BDA1666913CF2D852C6E18AC525FBB943BD603AF794CAEC0EDB93F418BF689045044947E0CDC28CF0580ADB";
+local q = "E000A6F135FA373C83B7D2F74C1DD9579D3D586080C72BD87D0F2B5B6C23AEE33DB5DA478CF4902D2C7618335DC196FE58EFBA9FD23D51523852854AD827EAC5";
+local dp = "ECB166C8DF1A51C947A95F58E7AD17B7EB7BFA6984D3CD3677C756140D3D98B7E895E5610123F8D7FA16F87796CCFE3802CBFA5F78D137AB9F478CE34C4F5E07";
+local dq = "6151C735FAE687C301D306942C7CB765AA49F1B093A274B92CB43F790BC58100F7599FC900436CB443A1D727D1EEFEA3E88DD6BE030062E95ED0F35A2E0941A5";
+rsa_calc_e(p, dp);  
+rsa_calc_e(q, dq); 
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="6-sm2-api">6. SM2 API</h2>
+
+<blockquote>
+  <p>SM2 cipher is C1C3C2, not C1C2C3.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="61-string-sm2_generate_key">6.1 string[] sm2_generate_key()</h4>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key &amp; private key returned, in lua it is a table:  <br />
+  table[0] is private key;<br />
+  table[1] is public key point x coordination;<br />
+  table[2] is public key point y coordination.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local sm2_key = {};
+sm2_key = sm2_generate_key();
+if(sm2_key ~= nil)
+then
+  local privateKey = sm2_key[0];
+  local publicKey_x = sm2_key[1];
+  local publicKey_y = sm2_key[2];
+end
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="62-string-sm2_encryptstring-data-string-publickey_x-string-publickey_y">6.2 string sm2_encrypt(string data, string publicKey_x, string publicKey_y)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be encrypted.  <br />
+ publicKey_x - The Public key point x coordination.<br />
+ publicKey_y - The Public key point y coordination.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned(C1C3C2).</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "0102030405060708";
+local publicKey_Qx = "1D23D1BB2871FC4C1AA506E13A1BDB4246D31F4486A9AF3AE8F6F95481162473";
+local publicKey_Qy = "CE2CAE8BB27F060ED8CB975ADF3CBAD5F88B4D83C0962884464C82F56CE76DD9";
+local privateKey = "E5FDB4789F9F1E67D2EEADFD3EECDE4AE046C2B843983D8A44FB7029D6EF1932";
+sm2_encrypt(data, publicKey_Qx, publicKey_Qy);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="63-string-sm2_decryptstring-data-string-privatekey">6.3 string sm2_decrypt(string data, string privateKey)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data to be decrypted(C1C3C2).    <br />
+ privateKey - The private key.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "DDB1A734E71BABB35D3B10E5D52572A8B7FAA51F496A9FFB59323E336D9FDB0316FA05A6AC8B092F6C052357F1E2F0840A457EC44EDE01D1B64A94A0E3E70112FCADB85CCAF7EC44761AAA1AD291C0A1A5C23489E6215B1D09DE4A8FBE6B25166E30D92F714117DF";
+local publicKey_Qx = "1D23D1BB2871FC4C1AA506E13A1BDB4246D31F4486A9AF3AE8F6F95481162473";
+local publicKey_Qy = "CE2CAE8BB27F060ED8CB975ADF3CBAD5F88B4D83C0962884464C82F56CE76DD9";
+local privateKey = "E5FDB4789F9F1E67D2EEADFD3EECDE4AE046C2B843983D8A44FB7029D6EF1932";
+sm2_decrypt(data, privateKey);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="64-string-sm2_signstring-data-string-privatekey-string-id">6.4 string[] sm2_sign(string data, string privateKey, string id)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data(not Za,not e) to be signed.<br />
+ privateKey - The private key.<br />
+ id - The identifier, the default value is “31323334353637383132333435363738”.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sign returned, in lua it is a table:<br />
+  table[0] is r;<br />
+  table[1] is s.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "0102030405060708";
+local publicKey_Qx = "1D23D1BB2871FC4C1AA506E13A1BDB4246D31F4486A9AF3AE8F6F95481162473";
+local publicKey_Qy = "CE2CAE8BB27F060ED8CB975ADF3CBAD5F88B4D83C0962884464C82F56CE76DD9";
+local privateKey = "E5FDB4789F9F1E67D2EEADFD3EECDE4AE046C2B843983D8A44FB7029D6EF1932";
+local id = "31323334353637383132333435363738";
+sm2_sign(data, privateKey);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="65-bool-sm2_verifystring-data-string-rs_r-string-rs_s-string-publickey_x-string-publickey_y-string-id">6.5 bool sm2_verify(string data, string rs_r, string rs_s, string publicKey_x, string publicKey_y, string id)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ data - The data(not Za,not e) to be verify.<br />
+ rs_r - The result of signed r.<br />
+ rs_s - The result of signed s.<br />
+ publicKey_x - The Public key point x coordination.<br />
+ publicKey_y - The Public key point y coordination.<br />
+ id - The identifier, the default value is “31323334353637383132333435363738”.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of verify returned, when an exception is thrown, error counter will auto increase.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "0102030405060708";
+local r = "1E456ADA1EA11C33F062C42504DF1FF9A00E1A2A232E39E9376E36217B0BCD3F";
+local s = "5F45E340DFF9C8A0257774971120675B503507825EF7E10F40BFF7988BD35433";
+local publicKey_Qx = "1D23D1BB2871FC4C1AA506E13A1BDB4246D31F4486A9AF3AE8F6F95481162473";
+local publicKey_Qy = "CE2CAE8BB27F060ED8CB975ADF3CBAD5F88B4D83C0962884464C82F56CE76DD9";
+sm2_verify(data, r, s, publicKey_Qx, publicKey_Qy);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="66-string-sm2_calc_public_keystring-privatekey">6.6 string sm2_calc_public_key(string privateKey)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ privateKey - The private key.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key returned, in lua it is a table:  <br />
+  table[0] is public key point x coordination;<br />
+  table[1] is public key point y coordination.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local privateKey = "5C75E9AD1428EEB86C5C93393EFD8BE1082499ED22ABF19556DF0A1329100858";
+local ret_pub = {};
+ret_pub = sm2_calc_public_key(privateKey);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="7-sm3-api">7. SM3 API</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="71-string-sm3string-data">7.1 string sm3(string data)</h4>
+
+<blockquote>
+  <p>Parameters: <br />
+ data - The data to be hashed.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sm3 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sm3("899966B9CBB014B13795C8EC34C364B8");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="8-sm4-api">8. SM4 API</h2>
+
+<blockquote>
+  <p>There are no padding in Parameter data, you should make sure the bytes of data is n*16 (n=1,2,3…).</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="81-string-sm4_ecb_encryptstring-data-string-key">8.1 string sm4_ecb_encrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the sm4 algorithm.<br />
+ data - The data to be encrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "5B0CB8AF8DD1148F0DEA6E99FA3DDD60";
+local key = "E71BBBF054DC3631DE28A9B66D5265A3";
+sm4_ecb_encrypt(data, key);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="82-string-sm4_ecb_decryptstring-data-string-key">8.2 string sm4_ecb_decrypt(string data, string key)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the sm4 algorithm.<br />
+ data - The data to be decrypted.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "5B0CB8AF8DD1148F0DEA6E99FA3DDD60";
+local key = "E71BBBF054DC3631DE28A9B66D5265A3";
+sm4_ecb_decrypt(data, key);  
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="83-string-sm4_cbc_encryptstring-data-string-key-string-iv">8.3 string sm4_cbc_encrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the sm4 algorithm.<br />
+ data - The data to be encrypted. <br />
+ iv - The initialization vector, default value is “00000000000000000000000000000000”, it should be 16 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of encrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "5B0CB8AF8DD1148F0DEA6E99FA3DDD60";
+local key = "E71BBBF054DC3631DE28A9B66D5265A3";
+local iv = "761293016198C2C527F049EACE048B96";
+sm4_cbc_encrypt(data, key);
+sm4_cbc_encrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="84-string-sm4_cbc_decryptstring-data-string-key-string-iv">8.4 string sm4_cbc_decrypt(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the sm4 algorithm.<br />
+ data - The data to be decrypted. <br />
+ iv - The initialization vector, default value is “00000000000000000000000000000000”, it should be 16 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of decrypt returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "5B0CB8AF8DD1148F0DEA6E99FA3DDD60";
+local key = "E71BBBF054DC3631DE28A9B66D5265A3";
+local iv = "761293016198C2C527F049EACE048B96";
+sm4_cbc_decrypt(data, key);
+sm4_cbc_decrypt(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="85-string-sm4_macstring-data-string-key-string-iv">8.5 string sm4_mac(string data, string key, string iv)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ key - The 16 bytes key to use in the sm4 algorithm.<br />
+ data - The data to be encrypted, no padding. <br />
+ iv - The initialization vector, default value is “00000000000000000000000000000000”, it should be 16 bytes.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return 16 bytes encrypt string..</p>
+</blockquote>
+
+<blockquote>
+  <p>Samelike triple_des_mac function.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local data = "5B0CB8AF8DD1148F0DEA6E99FA3DDD60";
+local key = "E71BBBF054DC3631DE28A9B66D5265A3";
+local iv = "761293016198C2C527F049EACE048B96";
+sm4_mac(data, key);
+sm4_mac(data, key, iv);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="9-ecdsa">9. ECDSA</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>ECC Curve name: “prime192v1”,”prime256v1”,”P-192”,”P-224”,”P-256”,”P-384”,”P-521”,”secp192k1”,”secp192r1”,”secp224k1”,”secp224r1”,”secp256k1”,”secp256r1”,”secp384r1”,”secp521r1”.</p>
+</blockquote>
+
+<h4 id="91-string-ecc_generate_keystring-curve">9.1 string[] ecc_generate_key(string curve)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ curve - The ECC curve name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key &amp; private key returned, in lua it is a table:  <br />
+  table[0] is private key;<br />
+  table[1] is public key point x coordination;<br />
+  table[2] is public key point y coordination.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local ecc_key = {};
+ecc_key = ecc_generate_key("P-256");
+if(ecc_key ~= nil)
+then
+  local privateKey = ecc_key[0];
+  local publicKey_x = ecc_key[1];
+  local publicKey_y = ecc_key[2];
+end
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="92-string-ecdsa_signstring-e-string-privatekey-string-curve">9.2 string[] ecdsa_sign(string e, string privateKey, string curve)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ e - The hash value to be signed.<br />
+ privateKey - The private key. 
+ curve - The ECC curve name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of sign returned, in lua it is a table:<br />
+  table[0] is r;   <br />
+  table[1] is s.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local e = "4A64A107F0CB32536E5BCE6C98C393DB21CCA7F4EA187BA8C4DCA8B51D4EA80A";
+local publicKey_Qx = "0B61EC647E55545F68A3D36EC4AAE3C7970C497B5514E26C04E46F14A7BF160B";
+local publicKey_Qy = "4C849D02DA7DB40B1697DFD4474EFD4CDEC62FEAB6E11CC14EB63A781B24F211";
+local privateKey = "3432626961C4F6D0AEFDA4B742A321241B7A532FC6CDD9F022693AD7BA5480D6";
+ecdsa_sign(e, privateKey, "P-256");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="93-bool-ecdsa_verifystring-e-string-rs_r-string-rs_s-string-publickey_x-string-publickey_y-string-curve">9.3 bool ecdsa_verify(string e, string rs_r, string rs_s, string publicKey_x, string publicKey_y, string curve)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ e - The hash value to be verify.  <br />
+ rs_r - The result of signed r. <br />
+ rs_s - The result of signed s. <br />
+ publicKey_x - The Public key point x coordination.<br />
+ publicKey_y - The Public key point y coordination.<br />
+ curve - The ECC curve name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of verify returned, when an exception is thrown, error counter will auto increase.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local e = "4A64A107F0CB32536E5BCE6C98C393DB21CCA7F4EA187BA8C4DCA8B51D4EA80A";
+local r = "F578495C0F2487C28E979B3D0E90A9D6FF4CA51FC81A55AAA670297282628AD7";
+local s = "0D8573A47C700F10AC84B3AE4F7DFC2A6364616BA0D0BBCEB40ABC0DDAC27999";
+local publicKey_Qx = "0B61EC647E55545F68A3D36EC4AAE3C7970C497B5514E26C04E46F14A7BF160B";
+local publicKey_Qy = "4C849D02DA7DB40B1697DFD4474EFD4CDEC62FEAB6E11CC14EB63A781B24F211";
+local privateKey = "3432626961C4F6D0AEFDA4B742A321241B7A532FC6CDD9F022693AD7BA5480D6";
+ecdsa_verify(e, r, s, publicKey_Qx, publicKey_Qy, "P-256" );
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="94-string-ecc_calc_public_keystring-privatekey-string-curve">9.4 string ecc_calc_public_key(string privateKey, string curve)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ privateKey - The private key.<br />
+ curve - The ECC curve name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The public key returned, in lua it is a table:  <br />
+  table[0] is public key point x coordination;<br />
+  table[1] is public key point y coordination.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local privateKey = "C48586633D77C34505D299817D13D957D474BB1B45C4AD38";
+local ret_pub = {};
+ret_pub = ecc_calc_public_key(privateKey, "P-192");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="10-pcsc-api">10. PCSC API</h2>
+
+<blockquote>
+  <p>Function reader1, reader2 can constructor two reader, then lua script can support dual-reader.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="101-object-reader1string-readername">10.1 object reader1(string readername)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ readername - PCSC reader name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The object of PCSC.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local rn = "SCM Microsystems Inc. SDI011G Smart Card Reader 0" 
+reader1(rn);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="102-object-reader2string-readername">10.2 object reader2(string readername)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ readername - PCSC reader name.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The object of PCSC.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local rn = "SCM Microsystems Inc. SDI011G Smart Card Reader 1" 
+reader2(rn);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="103-string-resetstring-readername">10.3 string reset(string readername)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ readername - PCSC reader name, the default value is “”.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  ATR.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local rn = "SCM Microsystems Inc. SDI011G Smart Card Reader 0" 
+reset();
+reset(rn);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="104-string-sendstring-apdu-string-expect-string-readername">10.4 string send(string apdu, string expect, string readername)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ apdu - apdu to send.<br />
+ expect - expect response of apdu, it can be SW(status word) or data | SW.<br />
+ readername - PCSC reader name, the default value is “”.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ response of apdu.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local rn = "SCM Microsystems Inc. SDI011G Smart Card Reader 0" 
+send("00A4040000", "");
+send("00A4040000", "9000");
+send("00A4040000", "", rn);
+send("00A4040000", "9000", rn);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="105-string-send_apdustring-apdu-string-expect-string-readername">10.5 string send_apdu(string apdu, string expect, string readername)</h4>
+
+<blockquote>
+  <p>Same as function send.</p>
+</blockquote>
+
+<h4 id="106-string-send_apdu_gpstring-apdu">10.6 string send_apdu_gp(string apdu)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ apdu - apdu to send.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ response of apdu.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>send_apdu_gp("00A4040000");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="11-gp-api">11. GP API</h2>
+
+<blockquote>
+  <p>When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<h4 id="111-string-get_session_key_dek">11.1 string get_session_key_dek()</h4>
+
+<blockquote>
+  <p>Returns:<br />
+ return data encryption key (DEK, Key Identifier ‘03’) session key.</p>
+</blockquote>
+
+<h4 id="112-void-set_security_domain_keystring-enc-string-mac-string-dek">11.2 void set_security_domain_key(string enc, string mac, string dek)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+  enc - The encryption key (Key Identifier ‘01’).<br />
+  mac - The MAC key (Key Identifier ‘02’).<br />
+  dek - The data encryption key (DEK) (Key Identifier ‘03’).</p>
+</blockquote>
+
+<blockquote>
+  <p>This function can set Security Domain Secure Channel key, before open secure channel you should set Security Domain Secure Channel key.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, Error Counter will auto increase.</p>
+</blockquote>
+
+<h4 id="113-string-initialize_updatestring-ver">11.3 string initialize_update(string ver)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+  ver - Key Version Number.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ response of apdu.</p>
+</blockquote>
+
+<blockquote>
+  <p>This is the INITIALIZE UPDATE command(ins =  0x50).</p>
+</blockquote>
+
+<h4 id="114-string-external_authenticatestring-sl">11.4 string external_authenticate(string sl)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+  sl - Security level, this parameter also worked for function send_apdu_gp.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ response of apdu.</p>
+</blockquote>
+
+<blockquote>
+  <p>This is the EXTERNAL AUTHENTICATE command(ins =  0x82).</p>
+</blockquote>
+
+<blockquote>
+  <p>Function initialize_update &amp; external_authenticate can open Security Domain Secure Channel.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local key = "404142434445464748494A4B4C4D4E4F";
+set_security_domain_key(key, key, key);
+send_apdu_gp("00A4040000","9000");
+initialize_update("00");
+external_authenticate("01")
+print(get_session_key_dek());
+send_apdu_gp("80CA00E000");
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="12-macro">12. MACRO</h2>
+
+<h4 id="121-__dir__">12.1 __DIR__</h4>
+
+<blockquote>
+  <p>The name of the current directory of source file.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(__DIR__);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="122-__file__">12.2 __FILE__</h4>
+
+<blockquote>
+  <p>The name of the current source file.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(__FILE__);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="123-__line__">12.3 __LINE__</h4>
+
+<blockquote>
+  <p>The integer line number in the current source file.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(__LINE__);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="13-math-opercations-api">13. Math Opercations API</h2>
+
+<blockquote>
+  <p>For bit_xor, bit_and, bit_or, lshift, rshift, big_num_compare, when an exception is thrown, Error Counter will auto increase and int -1 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>For other API, When an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Lua5.3 also implement bitwise operators &amp;, |, ~, », «.</p>
+</blockquote>
+
+<h4 id="131-int-bit_xorint-a-int-b">13.1 int bit_xor(int a, int b)</h4>
+
+<blockquote>
+  <p>Same as bitwise bitwise exclusive OR ~.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ a - The data to be xor.<br />
+ b - The data to be xor.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of a ^ b.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bit_xor(0x60, 0x77);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="132-int-bit_andint-a-int-b">13.2 int bit_and(int a, int b)</h4>
+
+<blockquote>
+  <p>Same as bitwise AND &amp;.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ a - The data to be and.<br />
+ b - The data to be and.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of a &amp; b.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bit_and(0x60, 0x77);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="133-int-bit_orint-a-int-b">13.3 int bit_or(int a, int b)</h4>
+
+<blockquote>
+  <p>Same as bitwise OR |.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ a - The data to be or.<br />
+ b - The data to be or.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of a | b.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bit_or(0x60, 0x77);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="134-int-lshiftint-a-int-b">13.4 int lshift(int a, int b)</h4>
+
+<blockquote>
+  <p>Same as left shift «.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lshift(0x60, 2);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="135-int-rshiftint-a-int-b">13.5 int rshift(int a, int b)</h4>
+
+<blockquote>
+  <p>Same as right shift ».</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rshift(0x60, 2);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="136-string-xorstring-a-string-b">13.6 string xor(string a, string b)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ a - The hex string to be xor.<br />
+ b - The hex string to be xor.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+  The result of xor, when an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xor("3B116A5147070161", "B9489CDD1AFB76B2");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="137-string-big_num_addstring-a-string-b-int-radix">13.7 string big_num_add(string a, string b, int radix)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ a,b - big number.<br />
+ radix - the string representation of a big number in a specified base(e.g. 16 means hex).</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ Add the values of two specified big number(a+b).</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local a = "999999999999";
+local b = "1";
+print(big_num_add(a,b,10));
+a = "FFFFFFFFFFFF";
+print(big_num_add(a,b,16));
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="138-string-big_num_subtractstring-a-string-b-int-radix">13.8 string big_num_subtract(string a, string b, int radix)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ a,b - big number.<br />
+ radix - the string representation of a big number in a specified base(e.g. 16 means hex).</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ Subtract the values of two specified big number(a-b).</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local a = "999999999999";
+local b = "1";
+print(big_num_subtract(a,b,10));
+a = "FFFFFFFFFFFF";
+print(big_num_subtract(a,b,16));
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="139-int-big_num_comparestring-a-string-b-int-radix">13.9 int big_num_compare(string a, string b, int radix)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ a,b- big number. <br />
+ radix - the string representation of a big number in a specified base(e.g. 16 means hex).</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ Compares two big number values and  returns an int that indicates whether the first value is less than(-1), equal to(0), or greater than(1) the second value.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local a = "999999999999";
+local b = "1";
+print(big_num_compare(a,b,10));
+a = "FFFFFFFFFFFF";
+print(big_num_compare(b,a,16));
+print(big_num_compare(a,a,16));
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="14-other-api">14. Other API</h2>
+
+<h4 id="141-void-printparams-object-obj">14.1 void print(params object[] obj)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ obj - a comma-separated list of arguments to print.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, it will print a ‘\n’.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(12);
+print(true);
+print(nil);
+print("Hello lua");
+print(12, true, "Hello lua");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="142-void-errorparams-object-obj">14.2 void error(params object[] obj)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ obj - a comma-separated list of arguments to print.</p>
+</blockquote>
+
+<blockquote>
+  <p>It will print a prefix “ERROR, “ before obj.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, it will print a ‘\n’.</p>
+</blockquote>
+
+<blockquote>
+  <p>Error counter will auto increase, the counter will be printed in the last of script log .</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error(12);
+error(true);
+error(nil);
+error("Hello lua");
+error(12, true, "Hello lua");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="143-string-get_dirstring-dir-int-level">14.3 string get_dir(string dir, int level)</h4>
+
+<blockquote>
+  <p>Parameters: 
+ dir - directory. 
+ level - if level=0 return directory itself , if level=-1 return parent directory …, the default value is 0, level should be less than 1.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return a directory according to level, when an exception is thrown, a nil returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get_dir("d:\\123");
+get_dir("d:\\123\\456", -1);
+get_dir("d:\\123\\456\\789", -2);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="144-datetime-get_time">14.4 DateTime get_time()</h4>
+
+<blockquote>
+  <p>Returns:<br />
+ return current time.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get_time();
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="145-int-time_subtractdatetime-t1-datetime-t2">14.5 int time_subtract(DateTime t1, DateTime t2)</h4>
+
+<blockquote>
+  <p>Returns:<br />
+ return milliseconds between t1 and t2, when an exception is thrown, -1 returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>When an exception is thrown, Error Counter will auto increase.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local t1 = get_time();
+for i=100,1,-1 do
+  print(i)
+end
+local t2 = get_time();
+print(t1, "\n", t2);
+local t = time_subtract(t1, t2);
+print(t/100, " ms");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="146-string-string2asciistring-str">14.6 string string2ascii(string str)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ str - string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return ascii in hex code.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string2ascii("PBOC Debit");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="147-string-ascii2stringstring-hex">14.7 string ascii2string(string hex)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ hex - ascii in hex code.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return string, if a hex cannot convert to ascii it will replace by ‘.’.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ascii2string("50424F43204465626974");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="148-string-base64_encodestring-str">14.8 string base64_encode(string str)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ str - string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base64_encode("PBOC Debit");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="149-string-base64_decodestring-str">14.9 string base64_decode(string str)</h4>
+
+<blockquote>
+  <p>Parameters:<br />
+ str - string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return string.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base64_decode("UEJPQyBEZWJpdA==");
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="1410-string-base58_encodestring-hex-bool-ischecksum">14.10 string base58_encode(string hex, bool isChecksum)</h4>
+
+<blockquote>
+  <p>Base58 for Bitcoin, Monero.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ hex - string in hex code.<br />
+ isChecksum - if isChecksum = true, then add 4 byte checksum to hex.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return base58 encode with/without checksum according isChecksum.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base58_encode("11AAFFEE");
+base58_encode("11AAFFEE", true);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="1411-string-base58_decodestring-str-bool-ischecksum">14.11 string base58_decode(string str, bool isChecksum)</h4>
+
+<blockquote>
+  <p>Base58 for Bitcoin, Monero.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ str - string.  <br />
+ isChecksum - if isChecksum = true, then str must have 4 byte checksum to verify.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return base58 decode with/without checksum according isChecksum.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base58_decode("TCE8m");
+base58_decode("3xQHNaiLmms", true);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="1412-string-base58_encode_ripplestring-hex-bool-ischecksum">14.12 string base58_encode_ripple(string hex, bool isChecksum)</h4>
+
+<blockquote>
+  <p>Base58 for Ripple.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ hex - string in hex code. <br />
+ isChecksum - if isChecksum = true, then add 4 byte checksum to hex.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return base58 encode with/without checksum according isChecksum.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base58_encode_ripple("11AAFFEE");
+base58_encode_ripple("11AAFFEE", true);
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="1413-string-base58_decode_ripplestring-str-bool-ischecksum">14.13 string base58_decode_ripple(string str, bool isChecksum)</h4>
+
+<blockquote>
+  <p>Base58 for Ripple.</p>
+</blockquote>
+
+<blockquote>
+  <p>Parameters:<br />
+ str - string.<br />
+ isChecksum - if isChecksum = true, then str must have 4 byte checksum to verify.</p>
+</blockquote>
+
+<blockquote>
+  <p>Returns:<br />
+ return base58 decode with/without checksum according isChecksum.</p>
+</blockquote>
+
+<blockquote>
+  <p>Examples:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base58_decode_ripple("TUN3m");
+base58_decode_ripple("sxQH425Lmm1", true);
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="15-attention">15. Attention</h2>
+
+<blockquote>
+  <p>You’d better check API’s return if it has a string/string[] returned.</p>
+</blockquote>
+
+<blockquote>
+  <p>Please use english path, especially used function reuqire and MACRO.</p>
+</blockquote>
+
+	
+	</div>
+
+<script src="/js/post.js" type="text/javascript"></script>
+
+
+
+
+
+
+</body>
+</html>
