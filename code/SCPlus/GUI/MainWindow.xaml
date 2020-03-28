@@ -1,0 +1,312 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SmartCard Plus" Height="700" Width="580" WindowStartupLocation="CenterScreen" FontFamily="Microsoft YaHei" WindowStyle="ThreeDBorderWindow" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="10,6,0,0" TextWrapping="Wrap" Text="Reader" VerticalAlignment="Top" Width="45" Foreground="#FF679495"/>
+        <ComboBox Name="comboBoxSelectReader" IsEditable="True" HorizontalAlignment="Left" Height="22" Margin="57,3,0,0" VerticalAlignment="Top" Width="360"  DropDownOpened="GetReaderLists" Foreground="#FF475F71" BorderBrush="#FF915656" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF647070" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button Content="_Reset" FontSize="10" HorizontalAlignment="Left" Height="22" Margin="430,3,0,0" VerticalAlignment="Top" Width="50" Click="ResetClick" Background="#FF578FC7"/>
+        <Button Content="_DisCon" FontSize="10" HorizontalAlignment="Left" Height="22" Margin="488,3,0,0" VerticalAlignment="Top" Width="50" Click="DisConnectClick" Background="#FFB88181"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Margin="10,32,10,6" VerticalAlignment="Stretch" SelectionChanged="tabSelectCilck" Background="{x:Null}">
+            <TabItem Header="_APDU" FontSize="12" Width="65" Height="22" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3" >
+                <Grid  Margin="-0,-0.5,-0.5,-0.5">
+                    <ComboBox x:Name="comboBoxAPDU" HorizontalAlignment="Left" Height="22" Margin="5,2,0,0" VerticalAlignment="Top" Width="430"  DropDownOpened="GetAPDULists" IsEditable="True" KeyDown="enterAPDUClick" BorderBrush="#FF72160D" Foreground="#FF163448"/>
+                    <Button x:Name="apduBtn" VerticalContentAlignment="Center" FontSize="10" Content="Send" HorizontalAlignment="Left" Height="22" Margin="450,2,0,0" VerticalAlignment="Top" Width="45" Click="SendClick" BorderBrush="#FF20425F" >
+                        <Button.Background>
+                            <SolidColorBrush Color="#FF69797B"/>
+                        </Button.Background>
+                    </Button>
+                    <TextBox HorizontalAlignment="Stretch" FontFamily="Consolas" Margin="-4.5,30,-4,-4" TextWrapping="Wrap" Name="apduresOUTPUT" VerticalAlignment="Stretch" IsReadOnly="True" VerticalContentAlignment="Top" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="apduresChangeed" IsUndoEnabled="False" Background="{x:Null}" BorderBrush="#FF150101" >
+                        <TextBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Clear" Click="apdu_Clear_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy All" Click="apdu_CopyAll_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy" Click="apdu_Copy_MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <CheckBox Name="apduAuto" ToolTip="Auto handle 61XX/6CXX"  HorizontalAlignment="Left" FontSize="10" Content="" Height="15" Margin="505,7,0,0" VerticalAlignment="Top" Width="22" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="_Script" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <Grid Margin="-0,-0.5,-0.5,-0.5">
+                    <ComboBox x:Name="comboBoxScript" BorderBrush="#FF72160D" Foreground="#FF163448" HorizontalAlignment="Left" AllowDrop="True" Height="22" Margin="5,2,0,0" VerticalAlignment="Top" Width="400"  DropDownOpened="GetScriptLists" IsEditable="True" DragEnter="scriptDrag" />
+                    <Button x:Name="scriptBtn" FontSize="10" Background="#FF69797B"  Content="Run" HorizontalAlignment="Left" Height="22" Margin="472,2,0,0" VerticalAlignment="Top" Width="50" Click="scriptClick"/>
+                    <TextBox HorizontalAlignment="Stretch" FontFamily="Consolas" BorderBrush="#FF150101" Margin="-4.5,30,-4,-4"  Name="scriptresOUTPUT" VerticalAlignment="Stretch" IsReadOnly="True" VerticalContentAlignment="Top" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" IsUndoEnabled="False" TextChanged="scriptresChangeed" Background="{x:Null}" >
+                        <TextBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Edit" Click="script_Edit_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Open Folder" Click="script_OpenFolder_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Clear" Click="script_Clear_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy All" Click="script_CopyAll_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy" Click="script_Copy_MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                    <Button Content="Open" FontSize="10" HorizontalAlignment="Left"  Background="#FF69797B" Height="22" Width="50" Margin="416,2,0,0" Name="openBtn" VerticalAlignment="Top" Click="openClick" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="_CAP" Width="65" Height="22" FontSize="12"  BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <Grid  Margin="-0,-0.5,-0.5,-0.5">
+                    <ComboBox x:Name="comboBoxCM" AllowDrop="True" HorizontalAlignment="Left" Height="22" Margin="5,2,0,0" VerticalAlignment="Top" Width="370"  DropDownOpened="GetCAPLists" IsEditable="True" DragEnter="capDrag" />
+                    <Button x:Name="loadBtn" FontSize="10" Background="#FF69797B"  Content="Run" HorizontalAlignment="Left" Height="22" Margin="431,2,0,0" VerticalAlignment="Top" Width="40" Click="loadClick" />
+                    <Button x:Name="Cap2ApduBtn" FontSize="10" Background="#FF69797B"  Content="2apdu" HorizontalAlignment="Left" Height="22" Margin="477,2,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.504,1.92" Click="Cap2ApduClick" />
+                    <TextBox HorizontalAlignment="Stretch" FontFamily="Consolas" BorderBrush="#FF150100" Margin="-4.5,30,-4,-4"  Name="cmresOUTPUT" VerticalAlignment="Stretch" IsReadOnly="True" VerticalContentAlignment="Top" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" IsUndoEnabled="False" TextChanged="cmresChangeed" Background="{x:Null}" >
+                        <TextBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Edit" Click="cap_Edit_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Open Folder" Click="cap_OpenFolder_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Clear" Click="cap_Clear_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy All" Click="cap_CopyAll_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy" Click="cap_Copy_MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                    <Button Content="Open" FontSize="10" Background="#FF69797B" Height="22" HorizontalAlignment="Left" Margin="384,2,0,0" Name="opencapBtn" VerticalAlignment="Top" Width="40" Click="opencapClick" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="_GP" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <Grid Margin="-0,-0.5,-0.5,-0.5">
+
+                    <TreeView Name="treeView" FontFamily="Consolas" Margin="-4.5,-1,0,0" HorizontalAlignment="Left" Width="450" Height="397" VerticalAlignment="Top" PreviewMouseRightButtonDown="treeViewRightClick" SelectedItemChanged="selectedItemChanged" Background="{x:Null}">
+
+                    </TreeView>
+                    <Button Content="List" FontSize="10" Background="#FF578FC7" Name="listBtn" HorizontalAlignment="Left" Height="22" Margin="460,16,0,0" VerticalAlignment="Top" Width="60" Click="listClick"/>
+                    <Button Content="Delete" FontSize="10" Background="#FF578FC7" IsEnabled="False" Name="delBtn" HorizontalAlignment="Left" Height="22" Margin="460,56,0,0" VerticalAlignment="Top" Width="60" Click="delClick"/>
+                    <Button Content="Install" FontSize="10" Background="#FF578FC7" IsEnabled="False" Name="installBtn" HorizontalAlignment="Left" Height="22" Margin="460,96,0,0" VerticalAlignment="Top" Width="60" Click="installClick" />
+                    <TextBox Name="viewOUTPUT" FontFamily="Consolas" BorderBrush="#FF150101" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" Margin="-4.5,395,-4,-4" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" TextChanged="viewChanged" Background="{x:Null}"  >
+                        <TextBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Clear" Click="view_Clear_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy All" Click="view_CopyAll_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy" Click="view_Copy_MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                    <Button Content="Memory" FontSize="10" Background="#FF578FC7" Height="22" HorizontalAlignment="Left" Margin="460,176,0,0" Name="getSpaceBtn" VerticalAlignment="Top" Width="60" Click="getSpaceClick" />
+                    <Button Content="Put Key"  FontSize="10" Background="#FF578FC7" IsEnabled="False" Name="putkeyBtn" HorizontalAlignment="Left" Height="22" Margin="460,296,0,0" VerticalAlignment="Top" Width="60" Click="putKeyClick" />
+                    <Button Content="Get STAT" FontSize="10" Background="#FF578FC7" Height="22" HorizontalAlignment="Left" Margin="460,216,0,0" Name="button2" VerticalAlignment="Top" Width="60" Click="getStatusClick" />
+                    <Button Content="Set STAT" FontSize="10" Background="#FF578FC7" Height="22" HorizontalAlignment="Left" Margin="460,256,0,0" Name="button4" VerticalAlignment="Top" Width="60" Click="SetStatusClick" />
+                    <Button Content="Select" FontSize="10" Background="#FF578FC7" Height="22" IsEnabled="False" HorizontalAlignment="Left" Margin="460,136,0,0" Name="SelectBtn" VerticalAlignment="Top" Width="60" Click="SelectClick" />
+                </Grid>
+
+            </TabItem>
+            <!--TabItem Header="_Mifare" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <Grid Margin="-0,-0.5,-0.5,-0.5">
+                    <TextBox Name="MifareOUTPUT" FontFamily="Consolas" BorderBrush="#FF150101" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" Margin="-4,59,-4.5,-3.6" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" TextChanged="viewChanged" Background="{x:Null}"  >
+                        <TextBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem Header="Clear" Click="view_Clear_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy All" Click="view_CopyAll_MenuItem_Click"></MenuItem>
+                                <MenuItem Header="Copy" Click="view_Copy_MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <GroupBox Header="" HorizontalAlignment="Left" Margin="6,2,0,0" VerticalAlignment="Top" Height="48" Width="538">
+                        <Grid HorizontalAlignment="Left" Margin="-1,-7,-1.2,-1.6" Width="527">
+                            <Button Content="Read" Name="MifareReadBtn" FontSize="10" Background="#91578F9f" Height="22" HorizontalAlignment="Left" Margin="227,7,0,0"  VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.937,0.627" />
+                            <Button Content="Write" Name="MifareWriteBtn" FontSize="10" Background="#91578F9f" Height="22" HorizontalAlignment="Left" Margin="358,7,0,0"  VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.937,0.627" />
+                            <Button Content="Config" Name="MifareConfigBtn" FontSize="10" Background="#91578F9f" Height="22" HorizontalAlignment="Left" Margin="97,7,0,0"  VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.937,0.627" />
+                        </Grid>
+
+                    </GroupBox>
+
+                </Grid>
+
+            </-->
+
+            <TabItem Header="_Alg" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3" >
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <Grid Background="#FFF5F6FF" Margin="-3,-1,-3,-3" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Left" Height="15" Margin="10,35,0,0" TextWrapping="Wrap" Text="IV" VerticalAlignment="Top" Width="30" Foreground="#FF64A1A2" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Name="desKeyBox"  Height="15" Margin="10,61,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top" Width="30" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Name="desDataBox" Height="15" Margin="10,87,0,0" TextWrapping="Wrap" Text="Data" VerticalAlignment="Top" Width="30" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Margin="12,168,0,0" TextWrapping="Wrap" Text="Ret" VerticalAlignment="Top" Width="40" />
+                        <TextBox x:Name="icvBox" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="40,33,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="00000000000000000000000000000000" VerticalAlignment="Top" Width="480" />
+                        <TextBox x:Name="keyBox" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="40,59,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  VerticalAlignment="Top" Width="480" />
+                        <TextBox x:Name="dataBox" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="40,85,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <RadioButton Content="AES" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="54,144,0,0" VerticalAlignment="Top" Width="50" Name="aes" Checked="aesCheck" />
+                        <RadioButton Content="DES" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="54,110,0,0" VerticalAlignment="Top" Width="50" Name="des" Checked="desCheck" />
+                        <RadioButton Content="3DES" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="54,127,0,0" VerticalAlignment="Top" Width="50" Name="tdes" Checked="tdesCheck" />
+                        <RadioButton Content="MAC" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="122,144,0,0" VerticalAlignment="Top" Width="50" Name="mac" Checked="macCheck" />
+                        <TextBox x:Name="res1Box" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="40,166,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <Button Content="Encrypt" Background="#FFBDD8F2" FontSize="10" HorizontalAlignment="Left" Height="22" Margin="128,191,0,0" VerticalAlignment="Top" Width="80" Name="desencBtn" Click="desencClick" />
+                        <Button Content="Decrypt" Background="#FFBDD8F2" FontSize="10" HorizontalAlignment="Left" Height="22" Margin="339,191,0,0" VerticalAlignment="Top" Width="80" Name="desdecBtn" Click="desdecClick" />
+                        <ComboBox Name="modeCombox" HorizontalAlignment="Left" Height="22" Margin="228,191,0,0" VerticalAlignment="Top" Width="90" SelectionChanged="modeCombox_SelectionChanged">
+
+                        </ComboBox>
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="35,306,0,0" TextWrapping="Wrap" Text="E" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="15" Margin="15,255,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="15" Margin="15,281,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="15" Margin="16,331,0,0" TextWrapping="Wrap" Text="P" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="15,356,0,0" TextWrapping="Wrap" Text="Q" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="12,381,0,0" TextWrapping="Wrap" Text="dP" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="12,431,0,0" TextWrapping="Wrap" Text="invQ" VerticalAlignment="Top" Width="30" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="10,457,0,0" TextWrapping="Wrap" Text="Data" VerticalAlignment="Top" Width="30" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Foreground="#FF64A1A2" Margin="12,406,0,0" TextWrapping="Wrap" Text="dQ" VerticalAlignment="Top" Width="20" />
+                        <TextBox x:Name="eBox" FontFamily="Consolas" Text="010001"  HorizontalAlignment="Left" TextAlignment="Left" Height="20" Margin="53,305,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="106" />
+                        <Button Content="Encrypt" Background="#FF8AA8C6" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="58,511,0,0" Height="22" Width="80" Name="rsaEncBtn" Click="rsaencClick" />
+                        <Button Content="CRT Decrypt" Background="#FF8AA8C6" FontSize="10" Name="rsaCRTBtn" Height="22" HorizontalAlignment="Left" Margin="249,511,0,0" VerticalAlignment="Top" Width="82" Click="rsacrtClick" />
+                        <Button Content="Decrypt" Background="#FF8AA8C6" Height="22" FontSize="10" HorizontalAlignment="Left" Margin="153,511,0,0" VerticalAlignment="Top" Width="80" Name="rsaDeBtn" Click="rsadecClick" />
+                        <Button Content="Random Key" FontSize="10" Background="#FF8AA8C6" Height="22" HorizontalAlignment="Left" Margin="268,304,0,0" VerticalAlignment="Top" Width="80" Name="genRSABtn" Click="genkeyClick" />
+                        <Button Content="Clear" Background="#FF759F95" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="442,511,0,0" VerticalAlignment="Top" Width="40" Name="clearRSABtn" Click="clearrsaClick" />
+                        <Border BorderBrush="Black" BorderThickness="0.5" HorizontalAlignment="Left" Height="1" Margin="0,221,0,0" VerticalAlignment="Top" Width="530" />
+                        <TextBox Name="nBox" FontFamily="Consolas" Height="20" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,280,0,0" Name="dBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,330,0,0" Name="pBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,355,0,0" Name="qBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,380,0,0" Name="dpBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,405,0,0" Name="dqBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,430,0,0" Name="invqBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,455,0,0" Name="rsasrcBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBox Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="40,480,0,0" Name="rsaresBox" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBlock Height="20" HorizontalAlignment="Left" Margin="12,482,0,0" Text="Ret" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.545,10.31" />
+                        <TextBox Height="20" FontFamily="Consolas" ToolTip="min 16bits, max 16384bits."  Text="1024" TextAlignment="Left" HorizontalAlignment="Left"  VerticalContentAlignment="Center" Margin="202,305,0,0" Name="bitBox" VerticalAlignment="Top" Width="60" />
+                        <TextBlock Height="18" HorizontalAlignment="Left" Foreground="#FF64A1A2" Margin="173,306,0,0" Name="textBlock1" Text="bits" VerticalAlignment="Top" Width="26" />
+                        <Button Content="Check" Background="#FF759F95" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="467,304,0,0" Name="checkrsaBtn" VerticalAlignment="Top" Width="40" Click="checkrsaClick" />
+                        <RadioButton Content="HASH" HorizontalAlignment="Left" Foreground="#FF9476C6" Height="16" Margin="192,110,0,0" VerticalAlignment="Top" Width="63" x:Name="hash" Checked="hashCheck" />
+                        <RadioButton Content="XOR" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9476C6" Margin="363,110,0,0" Width="48" x:Name="xor" Checked="xorCheck" />
+                        <RadioButton Content="Random" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9476C6" Margin="431,110,0,0" Width="75" x:Name="random" Checked="randomChecked"/>
+                        <Button Content="P,Q->Key" Background="#FF8AA8C6" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="356,304,0,0" Name="pqKey" VerticalAlignment="Top" Width="57" Click="pqKeyClick" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Foreground="#FF131010" Margin="255,229,0,0" Text="RSA" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" FontWeight="Bold" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Margin="165,9,0,0" Text="SymmetricAlgorithm/HASH/Tool" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontWeight="Bold" Foreground="#FF131010" />
+                        <TextBlock Height="20" HorizontalAlignment="Left" Margin="14,545,0,0" Text="Note: Encrypt = Verify Signature, Decrpyt = Signature.  " TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Foreground="#FF695252" />
+                        <Button Content="PKCS#1 Sign" Background="#FF8AA8C6" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="346,511,0,0" Name="pkcsBtn" VerticalAlignment="Top" Width="80" Click="pkcsBtnClick" />
+                        <Button Background="#FF8AA8C6" Content="Get E" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="421,304,0,0" Name="getEBtn" VerticalAlignment="Top" Width="40" Click="getEClick"  />
+                        <RadioButton Content="HMAC" HorizontalAlignment="Left" Foreground="#FF9476C6" Height="16" Margin="192,127,0,0" VerticalAlignment="Top" Width="63" x:Name="hmac" Checked="hmacCheck" />
+                        <RadioButton Content="SM4" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="122,127,0,0" VerticalAlignment="Top" Width="78" x:Name="sm4" Checked="sm4Check" />
+                        <RadioButton Content="SM1" Foreground="#FF9476C6" HorizontalAlignment="Left" Height="16" Margin="122,110,0,0" VerticalAlignment="Top" Width="78" x:Name="sm1" Checked="sm1Check" />
+                        <RadioButton Content="Encoding" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF9476C6" Margin="271,110,0,0" Width="75" x:Name="ConvertRadio" Checked="convertCheck"/>
+                        <RadioButton Content=" , 0x" Foreground="#FF9476C6" HorizontalAlignment="Left" Margin="431,127,0,0" Name="radio0x" VerticalAlignment="Top" Width="75" Checked="radio0xCheck" />
+                        <RadioButton Content="Calculator" Foreground="#FF9476C6" HorizontalAlignment="Left" Margin="431,144,0,0" Name="radioCalc" VerticalAlignment="Top" Width="80" Checked="radioCalcCheck"  />
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="_ECC" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <Grid Background="#FFF5F6FF" Margin="-3,-1,-3,-3">
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="18" Margin="10,35,0,0" TextWrapping="Wrap" Text="Private Key:" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.527,17.68" />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="18" Margin="10,82,0,0" TextWrapping="Wrap" Text="Public Key(Xp, Yp):" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.527,17.68" />
+                        <TextBox x:Name="smprikey" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,56,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <TextBox x:Name="smpubxkey" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,104,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <TextBox x:Name="smpubykey" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,130,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480"  />
+
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="15" Margin="12,425,0,0" TextWrapping="Wrap" Text="R" VerticalAlignment="Top" Width="20" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Margin="9,484,0,0" TextWrapping="Wrap" Text="Ret" VerticalAlignment="Top" Width="30" />
+                        <TextBox x:Name="smRS_R" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,424,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480"  />
+                        <TextBox x:Name="smres" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,482,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <Button Content="Encrypt" FontSize="10" Background="#FFBDD8F2" HorizontalAlignment="Left" Height="22" Margin="173,296,0,0" VerticalAlignment="Top" Width="80" x:Name="sm2encBtn" Click="sm2encClick" />
+                        <Button Content="Decrypt" FontSize="10" Background="#FFBDD8F2" HorizontalAlignment="Left" Height="22" Margin="290,296,0,0" VerticalAlignment="Top" Width="80" x:Name="sm2deBtn" Click="sm2deClick" />
+                        <Button Content="Sign" FontSize="10" Background="#FFBDD8F2" HorizontalAlignment="Left" Height="22" Margin="173,515,0,0" VerticalAlignment="Top" Width="80" x:Name="sm2sgnBtn" Click="sm2sgnClick" />
+                        <Button Content="Verify" FontSize="10" Background="#FFBDD8F2" HorizontalAlignment="Left" Height="22" Margin="290,515,0,0" VerticalAlignment="Top" Width="80" x:Name="sm2vrBtn" Click="sm2vrClick" />
+                        <Button Content="Random Key" FontSize="10" Background="#FFBDD8F2" HorizontalAlignment="Left" Height="22" Margin="211,170,0,0" VerticalAlignment="Top" Width="80" x:Name="sm2Genkey" Click="sm2GenkeyClick" />
+                        <TextBlock Height="15" Name="EccSignData_Block"  HorizontalAlignment="Left" Foreground="#FF64A1A2" Margin="8,397,0,0" Text="Data" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" />
+                        <TextBox Height="20" FontFamily="Consolas"  HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="38,396,0,0" Name="smdata" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Margin="12,105,0,0" Text="Xp" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" Foreground="#FF64A1A2" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Margin="12,130,0,0" Text="Yp" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"  Foreground="#FF64A1A2" />
+                        <Button Content="Clear" FontSize="10" Background="#FF759F95" Height="22" HorizontalAlignment="Left" Margin="438,170,0,0" Name="button1" VerticalAlignment="Top" Width="60" Click="smClear" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Foreground="#FF131010" Margin="241,9,0,0" RenderTransformOrigin="1.527,17.68" Text="SM2/ECC" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontWeight="Bold" />
+                        <TextBlock Height="15" Foreground="#FF64A1A2" HorizontalAlignment="Left" Margin="12,370,0,0" Text="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" />
+                        <TextBox  Height="20" FontFamily="Consolas" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="38,368,0,0" Name="idBox" Text="31323334353637383132333435363738" Width="300" />
+                        <Button Background="#FF759F95" Content="Check" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="370,170,0,0" Name="sm2CheckBtn" VerticalAlignment="Top" Width="60" Click="sm2keyCheck" />
+                        <TextBox Height="20" FontFamily="Consolas"  HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="38,239,0,0" x:Name="smdata_cipher" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="480"/>
+                        <TextBox x:Name="smres_cipher" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,265,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480" />
+                        <TextBlock Height="15" HorizontalAlignment="Left" Foreground="#FF64A1A2" Margin="8,241,0,0" Text="Data" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" />
+                        <TextBlock HorizontalAlignment="Left" Height="15" Margin="9,267,0,0" TextWrapping="Wrap" Text="Ret" VerticalAlignment="Top" Width="30" />
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="12,172,0,0" Text="Elliptic Curve" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"  Foreground="#FF64A1A2" />
+                        <ComboBox x:Name="eccCurve" HorizontalAlignment="Left" SelectedIndex="0" Height="22" Margin="94,170,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="eccCurve_SelectionChanged">
+                            <ComboBoxItem Content="SM2"></ComboBoxItem>
+                            <ComboBoxItem Content="prime192v1"></ComboBoxItem>
+                            <ComboBoxItem Content="prime256v1"></ComboBoxItem>
+                            <ComboBoxItem Content="P-192"></ComboBoxItem>
+                            <ComboBoxItem Content="P-224"></ComboBoxItem>
+                            <ComboBoxItem Content="P-256"></ComboBoxItem>
+                            <ComboBoxItem Content="P-384"></ComboBoxItem>
+                            <ComboBoxItem Content="P-521"></ComboBoxItem>
+                            <ComboBoxItem Content="secp192k1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp192r1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp224k1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp224r1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp256k1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp256r1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp384r1"></ComboBoxItem>
+                            <ComboBoxItem Content="secp521r1"></ComboBoxItem>
+                        </ComboBox>
+                        <TextBox x:Name="smRS_S" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="38,454,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="480"  />
+                        <TextBlock HorizontalAlignment="Left" Foreground="#FF64A1A2" Height="15" Margin="12,455,0,0" TextWrapping="Wrap" Text="S" VerticalAlignment="Top" Width="20" />
+                        <Button Background="#FFBDD8F2" Content="-&gt;PubKey" FontSize="10" Height="22" HorizontalAlignment="Left" Margin="297,170,0,0" Name="button3" VerticalAlignment="Top" Width="60" Click="EccGetPubKeyClick"/>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="_Config" Width="65" Height="22" FontSize="12" BorderBrush="#FFCB7C7C" Foreground="#FF0C0B0B" Background="#FFC0CCD3">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                    <Grid Background="#FFD2D1D2" Margin="-3,-3,-4,-4">
+                        <RadioButton Content="Plain" Height="17" HorizontalAlignment="Left" Margin="160,95,0,0" Name="radioPlain" VerticalAlignment="Top" Width="80" Foreground="#FF6EB3AB" Checked="radioPlainChecked" />
+                        <RadioButton Content="Mac" Height="17" HorizontalAlignment="Left" Margin="237,95,0,0" Name="radioMac" VerticalAlignment="Top" Width="80" Foreground="#FF6EB3AB" Checked="radioMacChecked"  />
+                        <RadioButton Content="Enc+Mac" Height="17" HorizontalAlignment="Left" Margin="301,95,0,0" Name="radioEncMac" VerticalAlignment="Top" Width="80" Foreground="#FF6EB3AB" Checked="radioEncMacChecked" />
+                        <ComboBox Height="22" HorizontalAlignment="Left" Margin="160,221,0,0" Name="channel" VerticalAlignment="Top" Width="50" DropDownClosed="channelChanged">
+                            <ComboBoxItem>0</ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="50,223,0,0" Name="Channel" Text="Logical channel" VerticalAlignment="Top" Width="95" />
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="50,266,0,0"  Text="Load length" VerticalAlignment="Top" Width="72" />
+                        <TextBox Height="20" HorizontalAlignment="Left" Margin="160,266,0,0" Name="loadLen" TextAlignment="Center" VerticalAlignment="Top" Width="36" TextChanged="loadLenChanged" />
+                        <TextBlock HorizontalAlignment="Left" Height="16" Margin="50,94,0,0" TextWrapping="Wrap" Text="Security level" VerticalAlignment="Top" Width="80"/>
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="50,180,0,0"  Text="GP Specification" VerticalAlignment="Top" Width="96" />
+                        <ComboBox Name="gpVer" HorizontalAlignment="Left" Height="22" Margin="160,178,0,0" VerticalAlignment="Top" Width="124" DropDownClosed="gpVerChanged">
+                            <ComboBoxItem ToolTip="Standard GlobalPlatform Card Specification 2.1">2.1</ComboBoxItem>
+                            <ComboBoxItem ToolTip="Standard GlobalPlatform Card Specification 2.2">2.2</ComboBoxItem>
+                            <ComboBoxItem ToolTip="Technical Specification of China Mobile Security and Multi-Space Application Card">China Mobile</ComboBoxItem>
+                            <ComboBoxItem ToolTip="China Unicom Java Card Based UICC Platform Interoperate Technical Specification">China Unicom</ComboBoxItem>
+                            <ComboBoxItem ToolTip="Same as China Unicom">China Telecom</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock HorizontalAlignment="Left" Height="16" Margin="50,51,0,0" TextWrapping="Wrap" Text="Security domain" VerticalAlignment="Top" Width="98"/>
+                        <ComboBox Name="sdXmlBox" IsEditable="False" HorizontalAlignment="Left" Height="22" Margin="160,50,0,0" VerticalAlignment="Top" Width="220" DropDownClosed="sdXmlChange" DropDownOpened="getCFGHist" >
+                            <ComboBoxItem >SecurityDomainConfig.xml</ComboBoxItem>
+                        </ComboBox>
+                        <Button Content="Open" FontSize="10" HorizontalAlignment="Left" Height="22" Foreground="#FF6A6F6F" Margin="403,49,0,0" VerticalAlignment="Top" Width="53" Click="configOpenClick" BorderBrush="#FF131212"/>
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="50,310,0,0"  Text="Timer" VerticalAlignment="Top" Width="53" />
+                        <CheckBox Name="apduTimer" Content="Enable timer for every apdu" HorizontalAlignment="Left" Height="18" Margin="160,310,0,0" VerticalAlignment="Top" Width="210" Click="timerClicked" />
+                        <TextBlock HorizontalAlignment="Left" Height="16" Margin="50,137,0,0" TextWrapping="Wrap" Text="KMC" VerticalAlignment="Top" Width="80"/>
+                        <ComboBox Name="kmcCombox" HorizontalAlignment="Left" Height="22" Margin="160,134,0,0" VerticalAlignment="Top" Width="124" DropDownClosed="kmcChanged">
+                            <ComboBoxItem>No Diversify</ComboBoxItem>
+                            <ComboBoxItem>CPG202</ComboBoxItem>
+                            <ComboBoxItem>CPG212</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock HorizontalAlignment="Left" Height="16" Margin="50,392,0,0" TextWrapping="Wrap" Text="JCOP Remote Port" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.412,19.927"/>
+                        <TextBox Height="20" HorizontalAlignment="Left" Margin="160,391,0,0" x:Name="jcopport" TextAlignment="Center" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.412,4.923" TextChanged="updateJCOPPort" />
+                        <TextBlock  Height="24" HorizontalAlignment="Left" Margin="93,444,0,0" Name="aboutBox" VerticalAlignment="Top" Width="74" TextAlignment="Center">
+                        <Hyperlink  Name="HypeLink1" Click="HypeLink1_OnClick" >Notes</Hyperlink>
+                        </TextBlock>
+                        <TextBlock  Height="24" HorizontalAlignment="Left" Margin="375,444,0,0" x:Name="helpBox" VerticalAlignment="Top" Width="74" TextAlignment="Center"><Hyperlink  x:Name="HypeLink2" Click="HypeLink2_OnClick" ><Run Text="Update"/></Hyperlink></TextBlock>
+
+                        <TextBlock  Height="24" HorizontalAlignment="Left" Margin="275,444,0,0" x:Name="apiBox" VerticalAlignment="Top" Width="74" TextAlignment="Center"><Hyperlink  x:Name="HypeLink3" Click="HypeLink3_OnClick" ><Run Text="Lua API"/></Hyperlink></TextBlock>
+                        <Button Content="Default Config" Height="24" FontSize="10" HorizontalAlignment="Left" Margin="383,213,0,0" Name="button5" VerticalAlignment="Top" Width="82" Click="defaultCfgClick" Background="#FFB97C7C" />
+                        <TextBlock Height="18" HorizontalAlignment="Left" Margin="50,352,0,0"  Text="Log" VerticalAlignment="Top" Width="53" />
+                        <CheckBox x:Name="scriptLog" Content="Script" HorizontalAlignment="Left" Height="18" Margin="160,353,0,0" VerticalAlignment="Top" Width="80" Click="scriptlogClicked" />
+                        <CheckBox x:Name="capLog" Content="CAP" HorizontalAlignment="Left" Height="18" Margin="263,353,0,0" VerticalAlignment="Top" Width="80" Click="caplogClicked" />
+                        <TextBlock Height="20" HorizontalAlignment="Left" Margin="340,495,0,0" Text="email: apdu@map.im" VerticalAlignment="Top" Width="140" />
+                        <TextBlock  Height="24" HorizontalAlignment="Left" Margin="179,444,0,0" x:Name="apiBox_Copy" VerticalAlignment="Top" Width="74" TextAlignment="Center"><Hyperlink  x:Name="HypeLink4" Click="HypeLink4_OnClick" ><Run Text="JS API"/></Hyperlink></TextBlock>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

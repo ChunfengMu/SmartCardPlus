@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GB2312"?>
+<config>
+  <gpVer>2.1</gpVer>
+  <securityLevel>1</securityLevel>
+  <channel>0</channel>
+  <SDconfig>SecurityDomainConfig.xml</SDconfig>
+  <kmc>No Diversify</kmc>
+  <loadLen>200</loadLen>
+  <apduTimer>false</apduTimer>
+  <jcopport>8050</jcopport>
+  <scriptLog>false</scriptLog>
+  <capLog>false</capLog>
+</config>

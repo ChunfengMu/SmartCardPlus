@@ -1,0 +1,68 @@
+﻿<Window x:Class="GUI.InstallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="install" Height="250" Width="500" ResizeMode="NoResize" FontFamily="Microsoft YaHei">
+    <Grid>
+        <Button Name="installBtn" Content="Install" HorizontalAlignment="Left" Height="22" Margin="280,180,0,0" VerticalAlignment="Top" Width="72" Click="installClick" />
+        <ComboBox Name="packageBox" FontFamily="Consolas" HorizontalAlignment="Left" IsEditable="True" Height="20" Margin="104,14,0,0" VerticalAlignment="Top" Width="338" DropDownOpened="getPackageList"/>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="32,17,0,0" TextWrapping="Wrap" Text="Package" VerticalAlignment="Top" Width="58"/>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="32,45,0,0" TextWrapping="Wrap" Text="Applet" VerticalAlignment="Top" Width="58"/>
+        <ComboBox Name="appletBox" FontFamily="Consolas" HorizontalAlignment="Left" IsEditable="True" Height="20" Margin="104,43,0,0" VerticalAlignment="Top" Width="338" DropDownOpened="getAppletList"/>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="32,76,0,0" TextWrapping="Wrap" Text="Instance" VerticalAlignment="Top" Width="58"/>
+        <ComboBox Name="instanceBox" FontFamily="Consolas" HorizontalAlignment="Left" IsEditable="True" Height="20" Margin="104,74,0,0" VerticalAlignment="Top" Width="338" >
+            <ComboBoxItem ToolTip="Proximity Payment System Environmen">325041592E5359532E4444463031</ComboBoxItem>
+            <ComboBoxItem ToolTip="Payment System Environment">315041592E5359532E4444463031</ComboBoxItem>
+            
+            <ComboBoxItem ToolTip="UnionPay Debit/Credit">A0000003330101</ComboBoxItem>
+            <ComboBoxItem ToolTip="UnionPay Debit">A000000333010101</ComboBoxItem>
+            <ComboBoxItem ToolTip="UnionPay Credit">A000000333010102</ComboBoxItem>
+            <ComboBoxItem ToolTip="UnionPay Quasi Credit">A000000333010103</ComboBoxItem>
+            <ComboBoxItem ToolTip="UnionPay Electronic Cash">A000000333010106</ComboBoxItem>
+
+            <ComboBoxItem ToolTip="VISA Debit/Credit">A0000000031010</ComboBoxItem>
+            <ComboBoxItem ToolTip="VISA Credit">A000000003101001</ComboBoxItem>
+            <ComboBoxItem ToolTip="VISA Debit">A000000003101002</ComboBoxItem>
+            <ComboBoxItem ToolTip="VISA Electron">A0000000032010</ComboBoxItem>
+            
+            <ComboBoxItem ToolTip="MasterCard Debit/Credit">A0000000041010</ComboBoxItem>
+
+            <ComboBoxItem ToolTip="JCB">A00000006510</ComboBoxItem>
+            
+            <ComboBoxItem ToolTip="Discover">A0000001523010</ComboBoxItem>
+
+            <ComboBoxItem ToolTip="Security Domain">A000000018434DFF</ComboBoxItem>
+
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="32,107,0,0" TextWrapping="Wrap" Text="Parameter" VerticalAlignment="Top" Width="64"/>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="32,140,0,0" TextWrapping="Wrap" Text="Privilege" VerticalAlignment="Top" Width="58"/>
+        <ComboBox Name="C9Box" FontFamily="Consolas" HorizontalAlignment="Left" Height="20" Margin="106,106,0,0" Text="C900" IsEditable="True" VerticalAlignment="Top" Width="338">
+            <ComboBoxItem ToolTip="NO parameter">C900</ComboBoxItem>
+            <ComboBoxItem ToolTip="GP Mapping Guidelines: security domain can accept extradition request">C90145</ComboBoxItem>
+            <ComboBoxItem ToolTip="GP2.2: application is to be implicitly selected on contactless interface">C900EF03CF0180</ComboBoxItem>
+            <ComboBoxItem ToolTip="GP2.2: application is to be implicitly selected on contact interface">C900EF03CF0140</ComboBoxItem>
+            <ComboBoxItem ToolTip="ETSI">C900EF0AA008810101A5038201C0</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="privBox" FontFamily="Consolas" HorizontalAlignment="Left" IsEditable="True" Height="20" Margin="104,138,0,0" VerticalAlignment="Top" Width="96" >
+            <ComboBoxItem ToolTip="NO Privilege">00</ComboBoxItem>
+            <ComboBoxItem ToolTip="CVM Management">02</ComboBoxItem>
+            <ComboBoxItem ToolTip="GP2.1:Default Selected, GP2.2:Card Reset">04</ComboBoxItem>
+            <ComboBoxItem ToolTip="Card Terminate">08</ComboBoxItem>
+            <ComboBoxItem ToolTip="Card Lock">10</ComboBoxItem>
+            <ComboBoxItem ToolTip="Security Domain">80</ComboBoxItem>
+            <ComboBoxItem ToolTip="Delegated Management,NOTE for GP2.2 there's no Receipt Generation">A0</ComboBoxItem>
+            <ComboBoxItem ToolTip="DAP Verification">C0</ComboBoxItem>                                             
+            <ComboBoxItem ToolTip="Mandated DAP Verification">C1</ComboBoxItem>
+            <ComboBoxItem ToolTip="Delegated Management + DAP Verification">E0</ComboBoxItem>
+            <ComboBoxItem ToolTip="Delegated Management + Mandated DAP Verification">E1</ComboBoxItem>
+
+            <ComboBoxItem ToolTip="Authorized Management, GP2.2 only">0040</ComboBoxItem>
+            <ComboBoxItem ToolTip="Authorized Management + Receipt Generation, GP2.2 only">C00080</ComboBoxItem>
+            <ComboBoxItem ToolTip="Delegated Management + Receipt Generation, GP2.2 only">A00080</ComboBoxItem>
+            <ComboBoxItem ToolTip="Authorized Management + DAP Verification, GP2.2 only">C040</ComboBoxItem>
+            <ComboBoxItem ToolTip="Authorized Management + Mandated DAP Verification, GP2.2 only">C140</ComboBoxItem>
+             
+        </ComboBox>
+        <Button x:Name="closeBtn" Content="Close" HorizontalAlignment="Left" Height="22" Margin="378,180,0,0" VerticalAlignment="Top" Width="72" Click="closeClick" />
+
+    </Grid>
+</Window>
